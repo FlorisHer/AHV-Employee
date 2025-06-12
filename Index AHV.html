@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AHV AI Assistant | Empowering Animal Health Vision</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7fdf7;
+      color: #2f4f2f;
+    }
+
+    header {
+      background: #3e8e41;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+    }
+
+    .section h2 {
+      color: #3e8e41;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background: #edf9ed;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 5px solid #3e8e41;
+    }
+
+    form label {
+      font-weight: bold;
+      color: #3e8e41;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.5rem 0 1rem;
+      border-radius: 5px;
+      border: 1px solid #bbb;
+      font-size: 1rem;
+    }
+
+    form button {
+      background: #3e8e41;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background: #347a37;
+    }
+
+    #thankYouMessage {
+      display: none;
+      padding: 1rem;
+      background: #e6f4ea;
+      border: 1px solid #3e8e41;
+      border-radius: 6px;
+      color: #0f5132;
+      margin-top: 1rem;
+    }
+
+    #thankYouMessage a {
+      color: #0f5132;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #2d3e2d;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Animal Health Vision (AHV)</h1>
+    <p>Sign in to Activate Your AI Assistant</p>
+  </header>
+
+  <div class="section">
+    <h2>What Can the AHV AI Assistant Help You With?</h2>
+    <p>Upload CSV files like milk production records, customer reports, or financial sheets. The assistant will help you gain insights, automate tasks, and act smarter — fast and personalized.</p>
+    <div class="features">
+      <div class="card">
+        <h3>Milk Record Analysis</h3>
+        <p>Upload farm visit or herd performance data and let the assistant find trends and outliers.</p>
+      </div>
+      <div class="card">
+        <h3>Sales & Visit Support</h3>
+        <p>Summarize rep visits, customer feedback, and generate tailored suggestions.</p>
+      </div>
+      <div class="card">
+        <h3>Finance & HR Tasks</h3>
+        <p>Process team attendance, payroll, and budget plans — instantly.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Sign In & Upload Your Data</h2>
+    <p>Use your <strong>@ahvint.com</strong> email to activate your assistant. It will be ready in one minute.</p>
+
+    <form id="registerForm" action="https://hook.eu2.make.com/u2luxbx3o1wihpsbysz8gelret1x0jze" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="form_type" value="employee_registration">
+
+      <label for="employeeName">Full Name:</label>
+      <input type="text" id="employeeName" name="employee_name" placeholder="e.g. Sophie Meijer" required>
+
+      <label for="employeeEmail">AHV Email Address:</label>
+      <input type="email" id="employeeEmail" name="employee_email" pattern=".*@ahvint\.com" placeholder="e.g. sophie.meijer@ahvint.com" required>
+
+      <label for="description">What do you want help with?</label>
+      <textarea id="description" name="task_description" rows="4" placeholder="e.g. Analyze milk production for May 2025..." required></textarea>
+
+      <label for="profilePicture">Upload your profile picture (optional):</label>
+      <input type="file" id="profilePicture" name="profile_picture" accept="image/*">
+
+      <label for="csvFile">Upload a CSV file (max 2MB):</label>
+      <input type="file" id="csvFile" name="company_excel" accept=".csv" required>
+
+      <button type="submit">Activate AI Assistant (ready in a minute)</button>
+    </form>
+
+    <div id="thankYouMessage">
+      <h3 id="thankTitle">Thank you!</h3>
+      <p>Your assistant is being set up. It will be available shortly.</p>
+      <p>Access it here:</p>
+      <p><a id="companyLink" href="#" target="_blank">https://ahv-ai.github.io/[YourName]</a></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Animal Health Vision (AHV). Powered by smart data, trusted by professionals.</p>
+  </footer>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      const employeeName = document.getElementById("employeeName").value.trim();
+      const slug = employeeName.replace(/\s+/g, '');
+
+      const csvFile = document.getElementById("csvFile").files[0];
+      if (csvFile && csvFile.size > 2 * 1024 * 1024) {
+        alert("CSV file is too large (max 2MB).");
+        return;
+      }
+
+      if (!csvFile.name.endsWith(".csv")) {
+        alert("Please upload a valid CSV file.");
+        return;
+      }
+
+      fetch(form.action, {
+        method: "POST",
+        body: data
+      }).then(response => {
+        if (!response.ok) throw new Error();
+        form.style.display = "none";
+        document.getElementById("thankYouMessage").style.display = "block";
+        document.getElementById("thankTitle").innerText = `Welcome, ${employeeName}!`;
+        const fullUrl = `https://ahv-ai.github.io/${slug}/`;
+        document.getElementById("companyLink").href = fullUrl;
+        document.getElementById("companyLink").innerText = fullUrl;
+      }).catch(() => {
+        alert("Something went wrong. Please try again.");
+      });
+    });
+  </script>
+</body>
+</html>
