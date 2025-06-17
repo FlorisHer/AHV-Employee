@@ -120,7 +120,7 @@
 
   <div class="section">
     <h2>What Can the AHV AI Assistant Help You With?</h2>
-    <p>Upload CSV files like milk production records, customer reports, or financial sheets. The assistant will help you gain insights, automate tasks, and act smarter — fast and personalized.</p>
+    <p>The assistant will help you gain insights, automate tasks, and act smarter — fast and personalized.</p>
     <div class="features">
       <div class="card">
         <h3>Milk Record Analysis</h3>
@@ -139,7 +139,7 @@
 
   <div class="section">
     <h2>Sign In & Upload Your Data</h2>
-    <p>Use your <strong>@ahvint.com</strong> email to activate your assistant. It will be ready in one minute.</p>
+    <p>Use your email to activate your assistant. It will be ready in one minute.</p>
 
     <form id="registerForm" action="https://hook.eu2.make.com/u2luxbx3o1wihpsbysz8gelret1x0jze" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="form_type" value="employee_registration">
@@ -147,17 +147,14 @@
       <label for="employeeName">Full Name:</label>
       <input type="text" id="employeeName" name="employee_name" placeholder="e.g. Sophie Meijer" required>
 
-      <label for="employeeEmail">AHV Email Address:</label>
-      <input type="email" id="employeeEmail" name="employee_email" pattern=".*@ahvint\.com" placeholder="e.g. sophie.meijer@ahvint.com" required>
+      <label for="employeeEmail">Email Address:</label>
+      <input type="email" id="employeeEmail" name="employee_email" placeholder="e.g. sophie@example.com" required>
 
       <label for="description">What do you want help with?</label>
       <textarea id="description" name="task_description" rows="4" placeholder="e.g. Analyze milk production for May 2025..." required></textarea>
 
       <label for="profilePicture">Upload your profile picture (optional):</label>
       <input type="file" id="profilePicture" name="profile_picture" accept="image/*">
-
-      <label for="csvFile">Upload a CSV file (max 2MB):</label>
-      <input type="file" id="csvFile" name="company_excel" accept=".csv" required>
 
       <button type="submit">Activate AI Assistant (ready in a minute)</button>
     </form>
@@ -181,17 +178,6 @@
       const data = new FormData(form);
       const employeeName = document.getElementById("employeeName").value.trim();
       const slug = employeeName.replace(/\s+/g, '');
-
-      const csvFile = document.getElementById("csvFile").files[0];
-      if (csvFile && csvFile.size > 2 * 1024 * 1024) {
-        alert("CSV file is too large (max 2MB).");
-        return;
-      }
-
-      if (!csvFile.name.endsWith(".csv")) {
-        alert("Please upload a valid CSV file.");
-        return;
-      }
 
       fetch(form.action, {
         method: "POST",
